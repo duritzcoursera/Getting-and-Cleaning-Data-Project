@@ -146,13 +146,15 @@ hr {
 
 <h2>Scripts</h2>
 
-<p>run_analysis.r is the only script used, and it needs no command line arguments. The script must be placed in the same directory as the &ldquo;getdata-projectfiles-UCI HAR Dataset&rdquo; folder after the zip file is unzipped. It outputs a file &ldquo;tidy_data.txt&rdquo;.</p>
+<p>run_analysis.r is the only script used, and it needs no command line arguments. The script must be placed in the same directory as the &ldquo;getdata-projectfiles-UCI HAR Dataset&rdquo; folder after the zip file is unzipped. It outputs a tab-delimited file &ldquo;tidy_data.txt&rdquo; containing the final dataset in the working directory.</p>
 
 <h2>Methodology</h2>
 
 <p>Six files of data exist containing training and testing data aligning subject, activity, and measurements. All six were read and concatenated.</p>
 
-<p>Next the data were trimmed to include only the means and standard deviations contained in the measurements. These include all of the variable names containing &ldquo;mean()&rdquo; and &ldquo;std()&rdquo;. &ldquo;meanFreq()&rdquo; was ignored because it is a weighted average of frequency components determined through FFT calculation rather than measurements.</p>
+<p>Next the data were trimmed to include only the means and standard deviations contained in the measurements. These include all of the variable names containing &ldquo;mean()&rdquo; and &ldquo;std()&rdquo;. Another feature, &ldquo;meanFreq()&rdquo;, appears to be a mean, but was trimmed because it is a weighted average of frequency components determined through FFT calculation rather than measurements.</p>
+
+<p>Transformations to improve readability such as column names and activity factor labels are added, then the table is written out to &ldquo;tidy_data.txt&rdquo; in the working directory.</p>
 
 </body>
 
