@@ -28,14 +28,14 @@ features.label <- gsub("^f", "", features.label)
 features.label <- gsub("[()][)]", "", features.label)
 features.label <- gsub("-", ".", features.label)
 
-data.descriptive <- data.trim
-names(data.descriptive) <- features.label
+data.tidy <- data.trim
+names(data.tidy) <- features.label
 
 ### Uses descriptive activity names to name the activities in the data set
 ### Appropriately labels the data set with descriptive activity names
 
 label.activity <- read.table("getdata-projectfiles-UCI HAR Dataset/UCI HAR Dataset/activity_labels.txt", sep=" ", col.names=c("factor", "activity"))
-data.descriptive$Activity <- factor(data.descriptive$Activity, labels=as.character(label.activity$activity))
+data.tidy$Activity <- factor(data.tidy$Activity, labels=as.character(label.activity$activity))
 
 ### Creates a second, independent tidy data set with the average of each variable for each activity and each subject
-data.tidy <- melt(data.descriptive, id=c("Subject", "Activity"))
+write.table(data.tidy, file="tidy_data.txt", sep="\t")
